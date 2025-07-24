@@ -2,9 +2,13 @@
 
 import { makeListener } from "@/network/client";
 import { api } from "@/trpc/react";
-import { use, useEffect, useState, type Usable } from "react";
+import { use, useEffect, useState } from "react";
 
-export default function Page({ params }: { params: Usable<{ room: string }> }) {
+export default function Page({
+  params,
+}: {
+  params: Promise<{ room: string }>;
+}) {
   const { room } = use(params);
 
   const [messages, setMessages] = useState<string[]>([]);

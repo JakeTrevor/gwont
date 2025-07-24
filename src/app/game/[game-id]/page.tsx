@@ -1,10 +1,12 @@
+import { use } from "react";
 import { Board } from "./board";
 
 export default function GamePage({
-  params: { "game-id": _gameId },
+  params,
 }: {
-  params: { "game-id": string };
+  params: Promise<{ "game-id": string }>;
 }) {
+  const { "game-id": _gameId } = use(params);
   return (
     <>
       <div className="fixed h-full w-50 bg-orange-50">Sidebar</div>
